@@ -8,7 +8,7 @@ def barcode_gen(data:str):
         if i not in c:
             raise ValueError("Invalid Character for code 39. Use A-Z 0-9 and -.$/+% space ")
     b=barcode.get_barcode('code39')   
-    b_i=b(data.upper(),writer=ImageWriter())
+    b_i=b(data.upper(),writer=ImageWriter(),add_checksum=False)
     buffer = BytesIO()
     b_i.write(buffer)
     buffer.seek(0)
